@@ -1,0 +1,26 @@
+# CMake and generated build products
+/out/
+/dist/
+/package/
+/release/
+/build/
+
+# Visual Studio and CMake user files
+/.vs/
+/.idea/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+
+# Compiled binaries and debugging symbols
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.obj
+*.res
