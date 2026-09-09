@@ -22,7 +22,7 @@ compile_commands.json
 *.vcxproj
 *.vcxproj.filters
 
-# Compiled binaries
+# Compiled binaries and debugging symbols
 *.exe
 *.dll
 *.pdb
