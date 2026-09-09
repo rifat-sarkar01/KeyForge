@@ -1,0 +1,31 @@
+# Visual Studio
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build directories
+**/out/
+**/build/
+**/dist/
+**/package/
+**/release/
+
+# CMake generated
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# Compiled binaries
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.obj
+*.res
