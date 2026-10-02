@@ -23,7 +23,7 @@
     {"id":"PAUSE","label":"Pause","scan_code":"0xE1","extended":true,"x":15.75,"y":0,"w":1,"h":1},
     {"id":"NUMLOCK","label":"NumLk","scan_code":"0x45","x":17.00,"y":0,"w":1,"h":1},
     {"id":"NUMSLASH","label":"/","scan_code":"0x35","extended":true,"x":18.00,"y":0,"w":1,"h":1},
-    {"id":"NUMSTAR","label":"*","scan_code":"0x37","extended":true,"x":19.00,"y":0,"w":1,"h":1},
+    {"id":"NUMSTAR","label":"*","scan_code":"0x37","x":19.00,"y":0,"w":1,"h":1},
     {"id":"NUMMINUS","label":"-","scan_code":"0x4A","x":20.00,"y":0,"w":1,"h":1},
 
     {"id":"GRV","label":"`","scan_code":"0x29","x":0.00,"y":1,"w":1,"h":1},

@@ -61,6 +61,19 @@ std::string FormatKeyEntry(const std::string& label, uint16_t scan_code,
     entry += ")";
     return entry;
 }
+
+// Windows translates a target's scan code into a virtual key before the key
+// reaches the active application. Pause's E1 sequence - and any other code
+// the keyboard table does not define - has no translation at all, so
+// injecting it produces VK 0x00. The hook has already swallowed the user's
+// real key by then, so such a target silently turns the remapped key into a
+// dead key. Never offer one.
+bool IsInjectableTarget(uint16_t scan_code, bool extended) {
+    if (scan_code == AudioOutputSwitchAction) return true;
+    const uint16_t full =
+        MakeFullScanCode(static_cast<uint8_t>(scan_code), extended);
+    return MapVirtualKey(full, MAPVK_VSC_TO_VK_EX) != 0;
+}
 }  // namespace
 
 void KeyPickerDialog::PopulateKeys() {
@@ -69,6 +82,7 @@ void KeyPickerDialog::PopulateKeys() {
     for (const auto& key : m_layout.keys) {
         if (key.id == m_source_key_id) continue;
         if (key.hardware_only) continue;
+        if (!IsInjectableTarget(key.scan_code, key.extended)) continue;
         AddListEntry(m_key_list, FormatKeyEntry(key.label, key.scan_code,
                                                   key.extended), &key);
     }
@@ -78,6 +92,7 @@ void KeyPickerDialog::PopulateKeys() {
     // remap targets since the engine only ever deals in scan codes.
     m_function_key_cells.clear();
     for (const auto& fk : GetFunctionKeys()) {
+        if (!IsInjectableTarget(fk.scan_code, fk.extended)) continue;
         KeyCell cell;
         cell.id = fk.id;
         cell.label = fk.label;

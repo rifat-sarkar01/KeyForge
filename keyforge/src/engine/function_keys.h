@@ -16,6 +16,15 @@
 // functions. Values cross-checked against multiple independent scan code
 // references (not just one source), since a wrong byte here would silently
 // remap a key to the wrong function.
+//
+// Every entry here must also be *synthesizable*: the hook injects a target as
+// a scan code, so Windows has to be able to translate that scan code back
+// into a virtual key. Power (E0 5E) and Wake (E0 63) look like they belong
+// here but have no virtual-key code at all - WinUser.h defines only VK_SLEEP -
+// so MapVirtualKey(MAPVK_VSC_TO_VK_EX) returns 0 for both. Injecting them
+// hands the active application an undefined key after the hook has already
+// swallowed the user's real one, which turns the remapped key into a dead key.
+// They are deliberately not listed.
 struct FunctionKeyDef {
     const char* id;       // stable id, used the same way a physical key's id is
     const char* label;    // human-readable label shown in the key picker
@@ -43,9 +52,7 @@ inline const std::vector<FunctionKeyDef>& GetFunctionKeys() {
         { "FN_BROWSER_FORWARD",  "Browser Forward",     0x69, true },
         { "FN_BROWSER_REFRESH",  "Browser Refresh",     0x67, true },
         { "FN_BROWSER_STOP",     "Browser Stop",        0x68, true },
-        { "FN_POWER",            "Power",               0x5E, true },
         { "FN_SLEEP",            "Sleep",               0x5F, true },
-        { "FN_WAKE",             "Wake",                0x63, true },
         { "FN_AUDIO_OUTPUT_SWITCH", "Cycle Audio Output Device",
                                                     AudioOutputSwitchAction, false },
     };

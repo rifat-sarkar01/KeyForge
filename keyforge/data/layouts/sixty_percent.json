@@ -67,7 +67,7 @@
     {"id":"LALT","label":"Alt","scan_code":"0x38","x":2.50,"y":4,"w":1.25,"h":1},
     {"id":"SPACE","label":"Space","scan_code":"0x39","x":3.75,"y":4,"w":6.25,"h":1},
     {"id":"RALT","label":"Alt","scan_code":"0x38","extended":true,"x":10.00,"y":4,"w":1.25,"h":1},
-    {"id":"LWIN2","label":"Win","scan_code":"0x5B","extended":true,"x":11.25,"y":4,"w":1.25,"h":1},
+    {"id":"RWIN","label":"Win","scan_code":"0x5C","extended":true,"x":11.25,"y":4,"w":1.25,"h":1},
     {"id":"MENU","label":"Menu","scan_code":"0x5D","extended":true,"x":12.50,"y":4,"w":1.25,"h":1},
     {"id":"RCTRL","label":"Ctrl","scan_code":"0x1D","extended":true,"x":13.75,"y":4,"w":1.25,"h":1}
   ]

@@ -78,3 +78,10 @@ add_keyforge_test(test_remap_table
     src/engine/remap_table.cpp
     src/layout/layout_loader.cpp
 )
+
+add_keyforge_test(test_layout_validation
+    tests/test_layout_validation.cpp
+    src/layout/layout_loader.cpp
+)
+target_compile_definitions(test_layout_validation PRIVATE
+    "KEYFORGE_LAYOUTS_DIR=\"${CMAKE_SOURCE_DIR}/data/layouts\"")
